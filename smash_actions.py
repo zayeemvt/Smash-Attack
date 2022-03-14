@@ -44,7 +44,7 @@ class Attack(Action):
         self.action_type = ActionType.ATTACK
         self.cost = 0
         self.gain = 2
-        self.bonus = 2
+        self.bonus = 3
         self.loss = 1
         self.damage = 15
         self.crit_damage = 20
@@ -60,8 +60,8 @@ class Smash(Action):
         self.text = "Smash Attacked"
         self.action_type = ActionType.ATTACK
         self.cost = 3
-        self.gain = 3
-        self.bonus = 4
+        self.gain = 4
+        self.bonus = 5
         self.loss = 1
         self.damage = 30
         self.crit_damage = 40

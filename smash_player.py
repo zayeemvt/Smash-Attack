@@ -70,7 +70,7 @@ class Player:
         self.damage = self.damage + damage
 
     def KO(self) -> None:
-        # self.decreasePoints(10)
+        self.decreasePoints(6)
         self.damage = 0
 
 
@@ -167,9 +167,9 @@ def processAction(player: Player, target: Player) -> None:
             print(f'{target.name} {target_sts} {target_pts} points')
             print(f'{target.name} took {target_dmg} damage')
 
-        if (target_dmg > 0 and target.damage >= offense.kill_threshold):
+        if (target_dmg > 0 and target.damage >= (offense.kill_threshold + target_dmg)):
             target.KO()
-            # player.increasePoints(8)
+            player.increasePoints(12)
             player.KOs = player.KOs + 1
             target.falls = target.falls + 1
             print(f'{target.name} was KO\'d!')
@@ -189,7 +189,8 @@ if __name__ == "__main__":
 
     player_list = []
 
-    for i in range(4):
+    NUM_PLAYERS = 4
+    for i in range(NUM_PLAYERS):
         player_list.append(Player("Player " + str(i)))
 
     action_count = {Attack: 0, Smash: 0, Shield: 0, Parry: 0, Grab: 0, Throw: 0}
@@ -206,7 +207,7 @@ if __name__ == "__main__":
             player.target = player.name
             
             while player.target == player.name:
-                player.target = player_list[random.randint(0,3)].name
+                player.target = random.choices(player_list, weights=(10, 15, 30, 60), k=1)[0].name
             
             # player.action = action_list[random.randint(0,5)]
             player.action = random.choices(action_list, weights=(50,20,30,10,30,10), k=1)[0]
