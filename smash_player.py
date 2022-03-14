@@ -70,7 +70,7 @@ class Player:
         self.damage = self.damage + damage
 
     def KO(self) -> None:
-        self.decreasePoints(6)
+        self.decreasePoints(12)
         self.damage = 0
 
 
@@ -169,7 +169,7 @@ def processAction(player: Player, target: Player) -> None:
 
         if (target_dmg > 0 and target.damage >= (offense.kill_threshold + target_dmg)):
             target.KO()
-            player.increasePoints(12)
+            player.increasePoints(15)
             player.KOs = player.KOs + 1
             target.falls = target.falls + 1
             print(f'{target.name} was KO\'d!')
@@ -242,3 +242,11 @@ if __name__ == "__main__":
 
     for action in action_count:
         print(action, action_count[action])
+
+    print("Final results")
+
+    AP_RATE = 3
+
+    for player in player_list:
+        pts = "{:.2f}".format(player.points/AP_RATE)
+        print(f'{player.name}: {player.damage}% | {pts} Pts. | {player.KOs - player.falls}')
