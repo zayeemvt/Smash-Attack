@@ -47,7 +47,7 @@ class Attack(Action):
         self.bonus = 3
         self.loss = 1
         self.damage = 15
-        self.crit_damage = 20
+        self.crit_damage = 25
         self.kill_threshold = 120
 
 
@@ -113,7 +113,7 @@ class Grab(Action):
         self.cost = 0
         self.gain = 4
         self.bonus = 6
-        self.loss = 2
+        self.loss = 3
         self.damage = 5
         self.crit_damage = 10
         self.kill_threshold = 1000
@@ -130,7 +130,7 @@ class Throw(Action):
         self.cost = 3
         self.gain = 7
         self.bonus = 11
-        self.loss = 2
+        self.loss = 3
         self.damage = 5
         self.crit_damage = 10
         self.kill_threshold = 100
